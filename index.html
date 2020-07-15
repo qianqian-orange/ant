@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ant</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/notice.css">
+	<link rel="stylesheet" type="text/css" href="css/bag.css">
+	<link rel="stylesheet" type="text/css" href="css/ball.css">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<!-- <meta name="viewport" content="width=device-widht,initial-scale=1.0,suer-scalable=1.0,maximum-scale=1.0,minimum-scale=1.0"> -->
+</head>
+<body>
+	<div class="frame">
+		<!--上层框架-->
+		<div class="top" id="top_demo">
+				<!--img层-->
+					<div class="img-div" id="img_div">
+						<!-- <div class="normal"> -->
+							<!-- 概率为 0.3-->
+							<div class="slide slide1 active"></div>
+						<!-- </div> -->
+						<!-- <div class="sunny"> -->
+							<!-- 概率为 0.4-->
+							<div class="slide slide2 "></div>
+						<!-- </div> -->
+						<!-- <div class="thunder"> -->
+							<!-- 概率为 0.1-->
+							<div class="slide slide3 "></div>
+						<!-- </div> -->
+						<!-- <div class="dry"> -->
+							<!-- 概率为 0.2-->
+							<div class="slide slide4">
+								<!--微笑恶搞表情-->
+								<!-- <div class="smile"></div> -->
+							</div>
+						<!-- </div> -->
+					</div>
+				<!--动态的云-->
+						<div class="cloud">	
+							<div class="cloud1" id="cloud"></div>
+							<div class="cloud2" id="cloud"></div>
+						</div>
+				<!-- 我的碳积分 -->
+						<!-- <div class="container">
+						    <div class="wave"><input type="text" disabled="disabled" ></div>
+						</div> -->
+				<!--用户信息显示层-->
+						<div class="user-div">
+								<div class="user-img" id="user-img"><img src="" id="img"></div>
+								<div class="Co2-integral" id="Co2-integral">
+									<div class="sp1">
+										<input type="text" name="Co2-integral" value="0g" readonly="readonly" id="integral"><span>成长值</span>
+									</div>
+									<div class="sp2">
+										<input type="text" name="Co2-integral" value="1g" readonly="readonly" id="score"><span>碳积分</span>
+									</div>
+									
+								</div>
+							<a href="#">
+								<div class="plant-img" id="plant_img">
+									<div class="plant-text0"><span id="span_text">种树</span></div>
+								</div>
+							</a>
+						</div>
+				<!--树显示层-->
+						<div  class="" id="tree">
+							<div class="show1" >
+								<img src="img/bag/kettle.png" class="kettle">
+								<li class="water0"></li>
+								<li class="water1"></li>
+								<li class="water2"></li>
+							</div>
+							<div class="show2" >
+								<img src="img/bag/fertilizer.png" class="fertilizer">
+							</div>
+							<!-- 积分泡的显示 -->
+							<!-- <div class="ball ball0" onclick="flow()" id="ball" readonly="readonly"><span>1g</span></div> -->
+							<!-- <div class="ball ball1" onclick="flow()" id="ball"><span>2g</span></div>
+							<div class="ball ball2" onclick="flow()" id="ball"><span>3g</span></div>
+							<div class="ball ball3" onclick="flow()" id="ball"><span>4g</span></div> -->
+						</div>
+						<div class="show3">
+								<img src="img/bag/needle.svg" class="needle">
+						</div>
+						<div class="protect"></div>
+				<!--攻略，签到，背包，任务层-->
+				<!--右边功能区-->
+						<!-- <div class="func-div1">
+							<a href="#">
+								<div class="strategy" id="strategy"></div>
+							</a>
+							<a href="#">
+								<div class="sign" id="sign"></div>
+							</a>
+							<a href="#">
+								<div class="bag" id="bag"></div>
+							</a>
+						</div> -->
+				<!--左下角功能区-->
+						<div class="func-div2" id="func-div2" onclick="notice_show()">
+							<a >
+								<div class="note" id="note"></div>
+							</a>
+						</div>
+				<!--公告区-->
+					<section class="notice" id="notice">
+							<div class="no-header">
+								<div class="text-box">
+									<div class="text">
+										<p>游戏公告</p>
+									</div>
+								</div>
+							</div>
+							<div class="no-bottom">
+								<dl>
+									<dt>公告内容</dt>
+									<dd>****</dd>
+									<dd>****</dd>
+								</dl>
+							</div>
+							<div class="no-footer">
+								<div class="close">
+									<div class="close-text" onclick="notice_close()">
+										<p>关闭</p>
+									</div>
+								</div>
+							</div>
+					</section>
+		</div>
+		<!-- 购买显示 -->
+		<div class="content buyShow">
+		      <div class="in_content">
+		        <p>数量不够了，是否要花费<span id="sp">0.02g</span>碳积分来购买？</p>
+		         <div class="img_content"><img id="toolImg"><div class="Num">X1</div></div>
+		         <input type="button" value="确定" id="ok">
+		         <input type="button" value="取消" id="no">
+		      </div>
+  	 	 </div>
+  	 	 <div class="content changeShow">
+		      <div class="in_content">
+		        <p>是否要花费500g小树成长值来兑换1g碳积分？</p>
+		        <img src="img/bag/change.svg" class="change_img">
+		         <input type="button" value="确定" id="submit">
+		         <input type="button" value="取消" id="cancle">
+		      </div>
+  	 	 </div>
+		<!--下层框架-->
+		<!-- <div class="bo-topp"></div> -->
+		<div class="bottom">
+				<div class="bm-div1" >
+					<div class="bm-div1-div1">
+						<div class="discribe"><span>已连续浇水</span></div>
+						<div class="plant-text"><input type="text" name="plant-day" id="plant-day"value="0" disabled="disabled" ><span class="day">天</span></div>
+					</div>
+					<div class="weekdays">
+						<span>周一</span>
+						<span>周二</span>
+						<span>周三</span>
+						<span>周四</span>
+						<span>周五</span>
+						<span>周六</span>
+						<span>周日</span>
+					</div>
+					<div class="click">
+						<div class="line"></div>
+						<div class="div-circle" id="div-circle">
+						<div class="circle c1" ><img src="img/sign/bigcir.svg" class="img1"></div>
+						<div class="circle c2" ><img src="img/sign/bigcir.svg" class="img2"></div>
+						<div class="circle c3" ><img src="img/sign/bigcir.svg" class="img3"></div>
+						<div class="circle c4" ><img src="img/sign/bigcir.svg" class="img4"></div>
+						<div class="circle c5" ><img src="img/sign/bigcir.svg" class="img5"></div>
+						<div class="circle c6" ><img src="img/sign/bigcir.svg" class="img6"></div>
+						<div class="circle c7" ><img src="img/sign/bigcir.svg" class="img7"></div>
+						</div>
+					</div>
+				</div>
+				<div class="change">
+						<input type="button" value="成长值" id="sub1">
+						<div class="arrow-up same"></div>
+				        <div class="arrow-down same"></div>
+						<input type="button" value="碳积分" id="sub2">
+					</div>
+				<div class="bag-div" id="bag_div">
+					<div class="tool">
+						<div class="times"><input type="text" value="X1" id="times1" disabled="disabled"></div>
+						<a><img src="img/bag/kettle.png" id="kettle"></a>
+						<div class="price"><span>0.02g</span></div>
+					</div>
+					<div class="tool">
+						<div class="times"><input type="text" value="X1" id="times2" disabled="disabled"></div>
+						<a><img src="img/bag/fertilizer.png" id="fertilizer"></a>
+						<div class="price"><span>0.03g</span></div>
+					</div>
+					<div class="tool">
+						<div class="times"><input type="text" value="X1" id="times3" disabled="disabled"></div>
+						<a><img src="img/bag/needle.svg" id="needle"></a>
+						<div class="price"><span>0.01g</span></div>
+					</div>
+				</div>
+				<div class="open-bag"><img src="img/bag/bag1.svg" ><img src="img/bag/bag2.svg" ></div>
+		</div>
+	</div>
+	<style type="text/css">
+		.open-bag{
+			position: absolute;
+		    width: 130px;
+		    height: 130px;
+		    right: -65px;
+		    bottom: 0px;
+		    float: right bottom;
+		    border-radius: 50%;
+		    background-color: white;
+		    opacity: 0.8;
+		}
+		.open{
+			transform: rotate(180deg);
+		}
+		.open-bag img:first-of-type{
+			position: absolute;
+		    margin-left: -65px;
+		    margin-top: 27px;
+		}
+		.open-bag img:last-of-type{
+			position: absolute;
+		    margin-left: -10px;
+		    margin-top: 27px;
+		    transform: rotate(180deg);
+		}
+		
+	</style>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body> 
+</html>
